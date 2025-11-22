@@ -1,4 +1,4 @@
-﻿{
+{
   "id": "rnk-lobby",
   "title": "RNK Lobby",
   "description": "A system-agnostic maintenance lobby module that prevents players from accessing the world while the GM performs maintenance. Players are presented with a full-screen overlay message while the lobby is active. Features countdown timers, customizable appearances, chat monitoring, and more!",
