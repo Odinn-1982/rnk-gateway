@@ -30,7 +30,7 @@
   "socket": true,
   "packs": [],
   "url": "https://github.com/Odinn-1982/rnk-lobby",
-  "manifest": "https://raw.githubusercontent.com/Odinn-1982/rnk-lobby/main/module.json",
+  "manifest": "https://raw.githubusercontent.com/Odinn-1982/rnk-lobby/master/module.json",
   "download": "https://github.com/Odinn-1982/rnk-lobby/releases/latest/download/rnk-lobby.zip",
   "readme": "README.md",
   "changelog": "CHANGELOG.md",
