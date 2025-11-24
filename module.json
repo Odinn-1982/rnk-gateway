@@ -1,41 +1,41 @@
-{
-  "id": "rnk-lobby",
-  "title": "RNK Lobby",
-  "description": "A system-agnostic GM prep lobby module that prevents players from accessing the world while the GM performs GM prepping. Players are presented with a full-screen overlay message while the lobby is active. Features countdown timers, customizable appearances, chat monitoring, and more!",
-  "version": "1.0.0",
-  "compatibility": {
-    "minimum": "12",
-    "verified": "13"
-  },
-  "authors": [
-    {
-      "name": "RNK",
-      "url": "https://github.com/Odinn-1982"
-    }
-  ],
-  "license": "MIT",
-  "esmodules": [
-    "scripts/main.js"
-  ],
-  "styles": [
-    "styles/lobby.css"
-  ],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "lang/en.json"
-    }
-  ],
-  "socket": true,
-  "packs": [],
-  "url": "https://github.com/Odinn-1982/rnk-lobby",
-  "manifest": "https://raw.githubusercontent.com/Odinn-1982/rnk-lobby/master/module.json",
-  "download": "https://github.com/Odinn-1982/rnk-lobby/releases/download/1/rnk-lobby.zip",
-  "readme": "README.md",
-  "changelog": "CHANGELOG.md",
-  "bugs": "https://github.com/Odinn-1982/rnk-lobby/issues"
+﻿{
+    "id":  "rnk-lobby",
+    "title":  "RNK Lobby",
+    "description":  "A system-agnostic GM prep lobby module that prevents players from accessing the world while the GM performs GM prepping. Players are presented with a full-screen overlay message while the lobby is active. Features countdown timers, customizable appearances, chat monitoring, and more!",
+    "version":  "1.0.0",
+    "compatibility":  {
+                          "minimum":  "12",
+                          "verified":  "13"
+                      },
+    "authors":  [
+                    {
+                        "name":  "RNK",
+                        "url":  "https://github.com/Odinn-1982"
+                    }
+                ],
+    "license":  "MIT",
+    "esmodules":  [
+                      "scripts/main.js",
+                      "scripts/rnk-localize-helper.js"
+                  ],
+    "styles":  [
+                   "styles/lobby.css"
+               ],
+    "languages":  [
+                      {
+                          "lang":  "en",
+                          "name":  "English",
+                          "path":  "lang/en.json"
+                      }
+                  ],
+    "socket":  true,
+    "packs":  [
+
+              ],
+    "url":  "https://github.com/Odinn-1982/rnk-lobby",
+    "manifest":  "https://raw.githubusercontent.com/Odinn-1982/rnk-lobby/master/module.json",
+    "download":  "https://github.com/Odinn-1982/rnk-lobby/releases/download/1/rnk-lobby.zip",
+    "readme":  "README.md",
+    "changelog":  "CHANGELOG.md",
+    "bugs":  "https://github.com/Odinn-1982/rnk-lobby/issues"
 }
-
-
-
