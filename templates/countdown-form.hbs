@@ -1,0 +1,61 @@
+<form class="rnk-lobby-form" autocomplete="off">
+  <header>
+    <h2>Countdown & Progress</h2>
+    <p>Schedule a maintenance countdown or communicate progress milestones to players.</p>
+  </header>
+  <div class="form-grid">
+    <div class="form-group">
+      <label for="countdownMinutes">Duration (minutes)</label>
+      <input type="number" id="countdownMinutes" name="countdownMinutes" value="{{state.duration}}" min="1" max="240">
+    </div>
+    <div class="form-group">
+      <label for="countdownMessage">Progress Message</label>
+      <input type="text" id="countdownMessage" name="countdownMessage" value="{{state.message}}" placeholder="e.g., Maintenance complete in">
+    </div>
+    <div class="form-group">
+      <label for="showProgressBar">Show Progress Bar</label>
+      <select id="showProgressBar" name="showProgressBar">
+        <option value="true" {{#if state.showProgressBar}}selected{{/if}}>Yes</option>
+        <option value="false" {{#unless state.showProgressBar}}selected{{/unless}}>No</option>
+      </select>
+    </div>
+  </div>
+  <section class="rnk-lobby-countdown-actions">
+    <h3>Completion Automation</h3>
+    <p>Choose optional actions to trigger the moment the timer expires.</p>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="countdownMacro">Macro</label>
+        <select id="countdownMacro" name="actions.macroId">
+          <option value="none">Do not run a macro</option>
+          {{#each macros}}
+            <option value="{{this.id}}" {{#if (eq ../state.actions.macroId this.id)}}selected{{/if}}>{{this.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="countdownScene">Activate Scene</label>
+        <select id="countdownScene" name="actions.sceneId">
+          <option value="none">Do not change scene</option>
+          {{#each scenes}}
+            <option value="{{this.id}}" {{#if (eq ../state.actions.sceneId this.id)}}selected{{/if}}>{{this.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="countdownSound">Play Audio Path</label>
+        <input type="text" id="countdownSound" name="actions.soundPath" value="{{state.actions.soundPath}}" placeholder="e.g., sounds/notify.wav or modules/yourModule/audio.ogg">
+      </div>
+      <div class="form-group">
+        <label for="countdownMessage">Chat Message</label>
+        <input type="text" id="countdownMessageAutomation" name="actions.chatMessage" value="{{state.actions.chatMessage}}" placeholder="Optional chat announcement when the countdown completes">
+      </div>
+    </div>
+  </section>
+  <footer>
+    <button type="submit" class="rnk-lobby-form__primary">Start / Update Countdown</button>
+    <button type="button" class="rnk-lobby-form__secondary" data-action="clear">Clear Countdown</button>
+  </footer>
+</form>
+
+

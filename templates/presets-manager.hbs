@@ -1,0 +1,49 @@
+<section class="rnk-lobby-presets">
+  <header>
+    <h2>Manage Presets</h2>
+    <p>Capture the current lobby configuration and recall it later with a single click.</p>
+  </header>
+  <form class="preset-form" data-form="new-preset" autocomplete="off">
+    <div class="preset-form__fields">
+      <label for="presetName">Preset Name</label>
+      <input type="text" id="presetName" name="presetName" placeholder="e.g., Session Kickoff" required>
+    </div>
+    <label class="preset-form__checkbox">
+      <input type="checkbox" name="includeCountdown" checked>
+      <span>Include countdown configuration</span>
+    </label>
+    <button type="submit" class="preset-form__submit">
+      <i class="fas fa-save" aria-hidden="true"></i>
+      <span>Save Preset</span>
+    </button>
+  </form>
+  {{#if hasPresets}}
+    <ul class="preset-list">
+      {{#each presets}}
+        <li class="preset-card">
+          <div class="preset-card__details">
+            <h3>{{this.name}}</h3>
+            <p>Saved {{this.savedAtLabel}}</p>
+            {{#if this.hasCountdown}}
+              <span class="preset-card__badge">Countdown</span>
+            {{/if}}
+          </div>
+          <div class="preset-card__actions">
+            <button type="button" class="preset-card__action" data-action="apply-preset" data-id="{{this.id}}">
+              <i class="fas fa-play" aria-hidden="true"></i>
+              <span>Apply</span>
+            </button>
+            <button type="button" class="preset-card__action preset-card__action--danger" data-action="delete-preset" data-id="{{this.id}}">
+              <i class="fas fa-trash" aria-hidden="true"></i>
+              <span>Delete</span>
+            </button>
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p class="preset-empty">No presets yet. Save one to jump between lobby styles instantly.</p>
+  {{/if}}
+</section>
+
+

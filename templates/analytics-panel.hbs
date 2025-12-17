@@ -1,0 +1,87 @@
+<section class="rnk-lobby-analytics">
+  <header>
+    <h2>Lobby Analytics</h2>
+    <p>Review maintenance trends, engagement and the effectiveness of your waiting room.</p>
+  </header>
+  <section class="analytics-metrics">
+    <article>
+      <h3>Total Uptime</h3>
+      <strong>{{totalHours}} hrs</strong>
+      <span>{{totalMinutes}} minutes accumulated</span>
+    </article>
+    <article>
+      <h3>Countdowns Triggered</h3>
+      <strong>{{countdownUses}}</strong>
+      <span>Automation sequences started</span>
+    </article>
+    <article>
+      <h3>Lobby Active Now</h3>
+      <strong>{{activeNowMinutes}}</strong>
+      <span>Minutes in current session</span>
+    </article>
+  </section>
+  <section class="analytics-grid">
+    <article class="analytics-card">
+      <header>
+        <h3>Recent Sessions</h3>
+      </header>
+      {{#if sessions.length}}
+        <ul class="analytics-list">
+          {{#each sessions}}
+            <li>
+              <span class="primary">{{this.startedAtLabel}}</span>
+              <span class="secondary">{{this.endedAtLabel}}</span>
+              <span class="metric">{{this.durationMinutes}} min</span>
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <p class="analytics-empty">No completed sessions recorded yet.</p>
+      {{/if}}
+    </article>
+    <article class="analytics-card">
+      <header>
+        <h3>Chat Leaders</h3>
+      </header>
+      {{#if chatLeaders.length}}
+        <ul class="analytics-list">
+          {{#each chatLeaders}}
+            <li>
+              <span class="primary">{{this.name}}</span>
+              <span class="metric">{{this.count}} message{{#unless (eq this.count 1)}}s{{/unless}}</span>
+              {{#if this.lastMessageAt}}
+                <span class="secondary">Last: {{this.lastMessageAt}}</span>
+              {{/if}}
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <p class="analytics-empty">No chat activity captured yet.</p>
+      {{/if}}
+    </article>
+    <article class="analytics-card">
+      <header>
+        <h3>Poll Outcomes</h3>
+      </header>
+      {{#if pollHistory.length}}
+        <ul class="analytics-list">
+          {{#each pollHistory}}
+            <li>
+              <span class="primary">{{this.question}}</span>
+              <span class="secondary">{{this.closedAtLabel}}</span>
+              {{#if this.topOption}}
+                <span class="metric">Win: {{this.topOption.text}}</span>
+              {{else}}
+                <span class="metric">No votes</span>
+              {{/if}}
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <p class="analytics-empty">No polls closed yet.</p>
+      {{/if}}
+    </article>
+  </section>
+</section>
+
+

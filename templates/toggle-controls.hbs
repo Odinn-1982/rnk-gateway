@@ -1,0 +1,27 @@
+<section class="rnk-lobby-window">
+  <header>
+    <h2>Lobby Switchboard</h2>
+    <p>Activate or deactivate the lobby, preview the player overlay, and notify everyone of the current status.</p>
+  </header>
+  <div class="rnk-lobby-window__status" data-status="{{#if isActive}}active{{else}}inactive{{/if}}">
+    <span class="dot"></span>
+    <strong>{{#if isActive}}The lobby is currently active.{{else}}The lobby is currently inactive.{{/if}}</strong>
+  </div>
+  <form class="rnk-lobby-window__form">
+    <button type="button" class="rnk-lobby-window__primary" data-action="toggle">
+      {{#if isActive}}Deactivate Lobby{{else}}Activate Lobby{{/if}}
+    </button>
+    <label class="rnk-lobby-window__checkbox">
+      <input type="checkbox" name="gmPreview" {{#if gmPreview}}checked{{/if}}>
+      <span>GM overlay preview</span>
+    </label>
+    <label class="rnk-lobby-window__checkbox">
+      <input type="checkbox" name="enableSound" {{#if enableSound}}checked{{/if}}>
+      <span>Play activation/deactivation sounds</span>
+    </label>
+    <textarea name="broadcast" rows="3" placeholder="Optional broadcast message to send when toggling.">{{broadcastDefault}}</textarea>
+    <button type="button" class="rnk-lobby-window__secondary" data-action="broadcast">Send Broadcast</button>
+  </form>
+</section>
+
+

@@ -1,0 +1,72 @@
+<section class="rnk-lobby-poll-manager">
+  <header>
+    <h2>Polls & Ready Checks</h2>
+    <p>Launch quick votes while players wait in the lobby and capture the results for reference.</p>
+  </header>
+  <section class="poll-manager__current">
+    <h3>Current Poll</h3>
+    {{#if hasActivePoll}}
+      <div class="poll-manager__live">
+        <h4>{{poll.question}}</h4>
+        <ul class="poll-manager__live-options">
+          {{#each options}}
+            <li>
+              <span class="label">{{this.text}}</span>
+              <span class="meta">{{this.votes}} vote{{#unless (eq this.votes 1)}}s{{/unless}} Â· {{this.percentage}}%</span>
+              <span class="progress" style="--progress: {{this.percentage}};"></span>
+            </li>
+          {{/each}}
+        </ul>
+        <div class="poll-manager__live-footer">
+          <span>{{totalVotes}} total vote{{#unless (eq totalVotes 1)}}s{{/unless}}</span>
+          <button type="button" class="poll-manager__button poll-manager__button--warn" data-action="close-poll">
+            <i class="fas fa-flag-checkered" aria-hidden="true"></i>
+            <span>Close Poll</span>
+          </button>
+        </div>
+      </div>
+    {{else}}
+      <p class="poll-manager__empty">No poll running. Use the form below to launch a new prompt.</p>
+    {{/if}}
+  </section>
+  <form class="poll-manager__form" data-form="create-poll" autocomplete="off">
+    <h3>Create New Poll</h3>
+    <label for="pollQuestion">Question</label>
+    <input type="text" id="pollQuestion" name="question" placeholder="e.g., Ready to dive back in?" required>
+    <label for="pollOptions">Options</label>
+    <textarea id="pollOptions" name="options" rows="4" placeholder="Enter one option per line" required></textarea>
+    <div class="poll-manager__form-actions">
+      <button type="submit" class="poll-manager__button">
+        <i class="fas fa-broadcast-tower" aria-hidden="true"></i>
+        <span>Launch Poll</span>
+      </button>
+      <button type="button" class="poll-manager__button" data-action="refresh-poll">
+        <i class="fas fa-sync" aria-hidden="true"></i>
+        <span>Refresh</span>
+      </button>
+    </div>
+  </form>
+  <section class="poll-manager__history">
+    <h3>Recent Polls</h3>
+    {{#if history.length}}
+      <ul class="poll-manager__history-list">
+        {{#each history}}
+          <li>
+            <div class="history__header">
+              <h4>{{this.question}}</h4>
+              <span>{{this.closedAtLabel}}</span>
+            </div>
+            <p>{{this.totalVotes}} vote{{#unless (eq this.totalVotes 1)}}s{{/unless}}</p>
+            {{#if this.topOption}}
+              <p class="history__winner">Top option: <strong>{{this.topOption.text}}</strong> ({{this.topOption.votes}})</p>
+            {{/if}}
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p class="poll-manager__empty">No history yet. Close a poll to start building records.</p>
+    {{/if}}
+  </section>
+</section>
+
+

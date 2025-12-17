@@ -1,0 +1,28 @@
+<section class="rnk-lobby-chat-monitor">
+  <header>
+    <h2>Lobby Chat Monitor</h2>
+    <p>Review and moderate the waiting room conversation.</p>
+  </header>
+  <div class="rnk-lobby-chat-monitor__log">
+    {{#if messages.length}}
+      {{#each messages}}
+        <article class="chat-entry">
+          <header>
+            <strong>{{this.author}}</strong>
+            <time datetime="{{this.iso}}">{{this.time}}</time>
+          </header>
+          <p>{{{this.text}}}</p>
+        </article>
+      {{/each}}
+    {{else}}
+      <p class="empty">No messages yet.</p>
+    {{/if}}
+  </div>
+  <footer>
+    <button type="button" class="rnk-lobby-form__secondary" data-action="export">Export</button>
+    <button type="button" class="rnk-lobby-form__secondary" data-action="clear">Clear Chat</button>
+    <button type="button" class="rnk-lobby-form__primary" data-action="close">Close</button>
+  </footer>
+</section>
+
+
