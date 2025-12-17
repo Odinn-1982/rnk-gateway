@@ -108,7 +108,7 @@ rnk-gateway/
     └── control-hub.hbs
 ```
 
-## 🔧 API Reference
+## API Reference
 
 The module exposes a global `RNKGateway` object with the following methods:
 
@@ -135,13 +135,13 @@ RNKGateway.clearChat();
 RNKGateway.openControlHub();
 ```
 
-## 🤝 Compatibility
+## Compatibility
 
 - **Foundry VTT**: v12+ (verified on v13)
 - **System Agnostic**: Works with any game system
 - **Browser Support**: All modern browsers
 
-## 📝 Changelog
+## Changelog
 
 ### v1.0.0
 - Initial release
@@ -154,17 +154,17 @@ RNKGateway.openControlHub();
 - GM Control Hub
 - Full socket-based synchronization
 
-## 📄 License
+## License
 
 MIT License - See [LICENSE](LICENSE) for details.
 
-## 🙏 Credits
+## Credits
 
 - **Author**: RNK
 - **Foundry VTT**: https://foundryvtt.com
 - Background artwork from the RNK Codex series
 
-## 🐛 Issues & Support
+## Issues & Support
 
 Found a bug? Have a feature request?
 
