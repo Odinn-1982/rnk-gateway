@@ -23,6 +23,28 @@ const MODULE_ID = "rnk-gateway";
 const MODULE_TITLE = "RNK Gateway";
 
 // ════════════════════════════════════════════════════════════════════════════════
+// RNK CODEX REGISTRATION - Must be at top level before hooks
+// ════════════════════════════════════════════════════════════════════════════════
+
+// Register with RNK Codex immediately (before hooks fire)
+globalThis.RNK_MODULES = globalThis.RNK_MODULES || [];
+globalThis.RNK_MODULES.push({
+  id: MODULE_ID,
+  title: MODULE_TITLE,
+  icon: 'fa-solid fa-dungeon',
+  applicationClass: 'gateway-control-hub',
+  windowSelector: '#gateway-control-hub',
+  order: 5,
+  quantumPortal: true,
+  onClick: () => {
+    if (globalThis.RNKGateway?.openControlHub) {
+      globalThis.RNKGateway.openControlHub();
+    }
+  }
+});
+console.log(`${MODULE_TITLE} | Registered with RNK Codex (Column B)`);
+
+// ════════════════════════════════════════════════════════════════════════════════
 // CONSTANTS & CONFIGURATION
 // ════════════════════════════════════════════════════════════════════════════════
 
@@ -234,8 +256,6 @@ class RNKGateway {
         RNKGateway.requestState();
       }
     }
-    
-    registerGatewayWithCodex();
 
     // Add GM sidebar button (fallback if codex not present)
     if (game.user.isGM) {
@@ -2468,14 +2488,18 @@ function registerRNKModule(config) {
   };
 
   if (globalThis.RNKCodex?.registerModule) {
+    console.log('RNK Gateway | Registering with RNKCodex API');
     globalThis.RNKCodex.registerModule(payload);
   } else {
+    console.log('RNK Gateway | RNKCodex API not available, using fallback array registration');
     globalThis.RNK_MODULES = globalThis.RNK_MODULES || [];
     const existing = globalThis.RNK_MODULES.findIndex(m => m.id === payload.id);
     if (existing >= 0) {
       globalThis.RNK_MODULES[existing] = { ...globalThis.RNK_MODULES[existing], ...payload };
+      console.log('RNK Gateway | Updated existing registration in RNK_MODULES');
     } else {
       globalThis.RNK_MODULES.push(payload);
+      console.log('RNK Gateway | Added to RNK_MODULES array');
     }
   }
 
@@ -2485,7 +2509,9 @@ function registerRNKModule(config) {
       applicationClass: payload.applicationClass,
       windowSelector: payload.windowSelector
     });
+    console.log('RNK Gateway | Registered with Quantum Portal');
   }
 
+  console.log(`RNK Gateway | Module registration complete for: ${config.id}`);
   return true;
 }
